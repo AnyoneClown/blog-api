@@ -156,10 +156,10 @@ REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
-# if DEBUG:
-#     REST_FRAMEWORK["DEFAULT_RENDERER_CLASSES"].append(
-#         "rest_framework.renderers.BrowsableAPIRenderer",
-#     )
+if DEBUG:
+    REST_FRAMEWORK["DEFAULT_RENDERER_CLASSES"].append(
+        "rest_framework.renderers.BrowsableAPIRenderer",
+    )
 
 
 SPECTACULAR_SETTINGS = {
