@@ -89,8 +89,11 @@ WSGI_APPLICATION = "core.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": 'django.db.backends.sqlite3',
-        "NAME": ":memory:",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.getenv("POSTGRES_DB"),
+        "USER": os.getenv("POSTGRES_USER"),
+        "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
+        "HOST": os.getenv("POSTGRES_HOST"),
     }
 }
 
@@ -134,9 +137,9 @@ STATIC_URL = "static/"
 MEDIA_ROOT = BASE_DIR / "media"
 MEDIA_URL = "/media/"
 
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+#if not DEBUG:
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
