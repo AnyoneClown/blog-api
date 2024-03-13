@@ -48,3 +48,17 @@ class User(AbstractUser):
     REQUIRED_FIELDS = []
 
     objects = UserManager()
+
+    class Meta:
+        ordering = ["email"]
+        verbose_name = "User"
+        verbose_name_plural = "Users"
+        app_label = "user"
+        db_table = "users"
+
+    @property
+    def full_name(self) -> str:
+        return f"{self.first_name} {self.last_name}"
+
+    def __str__(self) -> str:
+        return f"User: {self.email}"
